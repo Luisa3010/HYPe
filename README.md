@@ -13,12 +13,13 @@ To get the deduced amino acid sequences run this on a fasta file containing DNA 
 
 You can also specify the following flags:
 
--i <<input>>: can be a file or a directory. If it is a directory the script will run on all contained files with extensions .fa and .fasta
--o1 <<dna-output-file>> where to store the motif sequence as DNA, if not set, a default file name will be used
--o2 <<aa-output-file>> where to store the deduce motif sequence as amino acids, if not set, a default file name will be used
--n <<num-sequences>> the number of sequences from the file to be analyzed, e.g. -n 20 will analyze the first 20 sequences
--b <<allow-bad>> a boolean specifying whether sequences with ambiguous motifs should be included. Defaults to False. If set to True, ambiguous motifs are marked with 'X'. There will also be an additional 'X' appended in the last position to mark the entire sequence.
-
+```
+-i input: can be a file or a directory. If it is a directory the script will run on all contained files with extensions .fa and .fasta 
+-o1 DNA-output-file: where to store the motif sequence as DNA, if not set, a default file name will be used 
+-o2 aa-output-file: where to store the deduce motif sequence as amino acids, if not set, a default file name will be used 
+-n num-sequences: the number of sequences from the file to be analyzed, e.g. -n 20 will analyze the first 20 sequences 
+-b allow-bad: a boolean specifying whether sequences with ambiguous motifs should be included. Defaults to False. If set to True, ambiguous motifs are marked with 'X'. There will also be an additional 'X' appended in the last position to mark the entire sequence. 
+```
 
 ## Run on several files in parallel:
 
