@@ -285,7 +285,7 @@ def parse_motifs(infile_path, outfile1_path, outfile2_path, allow_bad_motifs, nu
                         motifs_ordered = []
                         for i, motif in enumerate(motifs.keys()):
                             # Get the alignment matrix
-                            alignment_matrix = semiglobal_matrix(motif, seq,1,-1,-1)
+                            alignment_matrix = semiglobal_matrix(motif, seq)
 
                             # get normalized scores for the probability of this motif at each position
                             value_matrix[i, :] = alignment_matrix[-1,:] / len(motif)
@@ -311,7 +311,7 @@ def parse_motifs(infile_path, outfile1_path, outfile2_path, allow_bad_motifs, nu
                                 # make the local alignment for each motif and get their scores
                                 scores = np.zeros(len(motifs_ordered))
                                 for j, motif in enumerate(motifs_ordered):
-                                    alignment_matrix = semiglobal_matrix(motif,seq[x_peaks[i - 1] - 1 if i > 0 else 0: x_peaks[i]],1, -1, -1)
+                                    alignment_matrix = semiglobal_matrix(motif,seq[x_peaks[i - 1] - 1 if i > 0 else 0: x_peaks[i]])
                                     scores[j] = alignment_matrix[-1, :].max() / len(motif)
 
                                 # get ids of the max scores
