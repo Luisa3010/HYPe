@@ -1,7 +1,8 @@
 # Motif parser for HYP1 in G. Pallida
 
-This is a script that uses the Smith-Waterman alignment algorithm to find motifs in the Hyper Variable Domain of the HYP1 gene. 
-Run the script on a fasta file for reads of the HYP1 gene to get the deduced motifs as DNA and amino acid sequences.
+This repository contains scripts that use alignment-algorithms to find motifs in the Hyper Variable Domain of the HYP1 gene. 
+grep_motifs_sw.py uses the Smith-Waterman algorithm and grep_motifs_semiglobal.py a modification of SW that has a modified gap penalty on the edges of motifs.
+Run the scripts on a fasta file for reads of the HYP1 gene to get the deduced motifs as DNA and amino acid sequences.
 
 ## Quickstart: 
 
@@ -20,6 +21,14 @@ You can also specify the following flags:
 -n num-sequences: the number of sequences from the file to be analyzed, e.g. -n 20 will analyze the first 20 sequences 
 -b allow-bad: a boolean specifying whether sequences with ambiguous motifs should be included. Defaults to False. If set to True, ambiguous motifs are marked with 'X'. There will also be an additional 'X' appended in the last position to mark the entire sequence. 
 ```
+
+The grep_motifs_semiglobal.py contains an additional flag:
+
+```
+-d diff: The maximum difference the aligned region in the read is allowed from the motif. This defaults to 0. A difference of n means, there can be a total of n insertions, deletions, and missmatches. 
+```
+In grep_motifs_sw.py this difference is set to 1.
+
 
 ## Run on several files in parallel:
 
@@ -50,6 +59,8 @@ Will run 10 jobs in parallel on all files starting with 'heads' and ending in '.
     prallel -j 2 python3 grep_motifs_sw.py -i {1} -b {2} ::: file1.fasta file2.fasta ::: True False
 
 This will run two jobs on the file1.fasta and file2.fasta once with errors allowed, and once with errors not allowed.
+
+
 
 
 
